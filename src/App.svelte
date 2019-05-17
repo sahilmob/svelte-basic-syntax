@@ -6,6 +6,7 @@
   let image = "";
   let description = "";
   let formState = "empty";
+  let createdContacts = [];
 
   function addContact() {
     if (
@@ -17,6 +18,7 @@
       formState = "invalid";
       return;
     }
+    createdContacts = [...createdContacts, { name, title, description, image }];
     formState = "done";
   }
 </script>
@@ -49,14 +51,16 @@
 
 <button on:click={addContact}>Add Contact Card</button>
 
-{#if formState === 'done'}
-  <ContactCard
-    userName={name}
-    jobTitle={title}
-    {description}
-    userImage={image} />
-{:else if formState === 'invalid'}
+{#if formState === 'invalid'}
   <p>Invlaid input.</p>
 {:else}
   <p>Please fill the form and hit the button!</p>
 {/if}
+
+{#each createdContacts as contact}
+  <ContactCard
+    userName={contact.name}
+    jobTitle={contact.title}
+    description={contact.description}
+    userImage={contact.image} />
+{/each}
