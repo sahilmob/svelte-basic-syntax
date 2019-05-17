@@ -32,4 +32,4 @@
 <!-- <button on:click={changeName}>Change Name</button> -->
 <!-- <input type="text" value={name} on:input={changeName} /> -->
 <input type="text" bind:value={name} />
-<ContactCard />
+<ContactCard userName={name} />
