@@ -4,6 +4,12 @@
 
   $: uppercaseName = name.toUpperCase();
 
+  $: console.log(name);
+
+  $: if (name !== "sahil") {
+    age = 31;
+  }
+
   function incAge() {
     age += 1;
   }
